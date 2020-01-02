@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace test\Message;
+namespace RongTest\Message;
 
-use Lib\Config\MessageType\TxtMsg;
-use Lib\Config\UserObject;
-use Lib\Message\Person\Person;
-use test\Request;
+use RongLib\Config\MessageType\TxtMsg;
+use RongLib\Config\UserObject;
+use RongLib\Message\Person\Person;
+use RongTest\Request;
 
 /**
  * @internal

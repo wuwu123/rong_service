@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lib\Config\MessageType;
+namespace RongLib\Config\MessageType;
 
 class TxtMsg extends AbstractMessage
 {

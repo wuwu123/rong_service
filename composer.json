@@ -21,12 +21,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Lib\\": "Lib/"
+            "RongLib\\": "Lib/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "test\\": "test/"
+            "RongTest\\": "test/"
         }
     }
 }

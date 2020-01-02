@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace test;
+namespace RongTest;
 
 use Dotenv\Dotenv;
-use Lib\Config\Config;
 use PHPUnit\Framework\TestCase;
+use RongLib\Config\Config;
 
 /**
  * @internal

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Lib;
+namespace RongLib;
 
 use GuzzleHttp\Client;
-use Lib\Config\Config;
 use Psr\Http\Message\ResponseInterface;
+use RongLib\Config\Config;
 
 class Request
 {

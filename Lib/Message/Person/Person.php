@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Lib\Message\Person;
+namespace RongLib\Message\Person;
 
-use Lib\Config\MessageType\AbstractMessage;
-use Lib\Config\UserObject;
-use Lib\Request;
+use RongLib\Config\MessageType\AbstractMessage;
+use RongLib\Config\UserObject;
+use RongLib\Request;
 
 class Person extends Request
 {
