@@ -1,6 +1,7 @@
 {
     "name": "wujie/rong-client",
     "type": "library",
+    "license": "MIT",
     "description": "融云接口",
     "require": {
         "php": ">=7.1",
