@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lib;
 
 use GuzzleHttp\Client;
@@ -8,7 +10,6 @@ use Psr\Http\Message\ResponseInterface;
 
 class Request
 {
-
     /**
      * @var Config
      */
@@ -33,9 +34,12 @@ class Request
         ];
         $header['Signature'] = sha1($this->config->getAppSecret() . $header['Nonce'] . $header['Timestamp']);
         if ($this->config->getHeaderPre()) {
-            array_walk($header, function($value, &$key, $pre) {
-                $key = $pre . $key;
-            }, $this->config->getHeaderPre());
+            $list = [];
+            foreach ($header as $key => $value) {
+                $list[$this->config->getHeaderPre() . $key] = $value;
+            }
+            unset($header);
+            return $list;
         }
         return $header;
     }
@@ -51,30 +55,26 @@ class Request
 
     /**
      * @param $path
-     * @param array $data
-     * @return array
      * @throws \Throwable
+     * @return array
      */
     public function post($path, array $data)
     {
-        return $this->run("POST", $path, $data);
+        return $this->run('POST', $path, ['form_params' => $data]);
     }
 
     /**
      * @param $method
      * @param $path
-     * @param array $params
-     * @return array
      * @throws \Throwable
+     * @return array
      */
     private function run($method, $path, array $params = [])
     {
         $retryNum = $this->config->getMaxRetry();
         beginning:
         try {
-            $response = $this->getClient()->request($method, $path, [
-                'body' => $params
-            ]);
+            $response = $this->getClient()->request(strtoupper($method), $path, $params);
             return $this->dataFormat($response);
         } catch (\Throwable $e) {
             if (--$retryNum >= 0) {
@@ -90,13 +90,11 @@ class Request
         if ($statusCode == 200) {
             $body = $response->getBody()->getContents();
             $data = json_decode($body, true);
-            if (200 == $data['code'] ?? false) {
+            if ($data['code'] == 200 ?? false) {
                 return [true, $data];
             }
             return [false, $data['code'] ?? false];
         }
         return [false, $statusCode];
     }
-
-
 }

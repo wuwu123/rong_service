@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Lib\Config\MessageType;
-
 
 class TxtMsg extends AbstractMessage
 {
@@ -18,7 +18,6 @@ class TxtMsg extends AbstractMessage
         return $this;
     }
 
-
     public function getMessageType(): string
     {
         return self::MESSAGE_TXT;
@@ -28,7 +27,7 @@ class TxtMsg extends AbstractMessage
     {
         return [
             'content' => $this->content,
-            'extra' => $this->extra
+            'extra' => $this->extra,
         ];
     }
 }

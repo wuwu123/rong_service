@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Lib\Config\MessageType;
-
 
 class ImgMsg extends AbstractMessage
 {
@@ -11,7 +11,6 @@ class ImgMsg extends AbstractMessage
     protected $imageUrl = '';
 
     /**
-     * @param string $imageUrl
      * @return $this
      */
     public function setImageUrl(string $imageUrl)
@@ -21,7 +20,6 @@ class ImgMsg extends AbstractMessage
     }
 
     /**
-     * @param bool $isFull
      * @return $this
      */
     public function setIsFull(bool $isFull)
@@ -30,18 +28,9 @@ class ImgMsg extends AbstractMessage
         return $this;
     }
 
-
     public function getMessageType(): string
     {
         return self::MESSAGE_IMG;
-    }
-
-    protected function getContent()
-    {
-        if ($this->imageUrl && $this->isFull != true) {
-            return file_get_contents($this->imageUrl);
-        }
-        return '';
     }
 
     public function getParams(): array
@@ -53,4 +42,11 @@ class ImgMsg extends AbstractMessage
         ];
     }
 
+    protected function getContent()
+    {
+        if ($this->imageUrl && $this->isFull != true) {
+            return file_get_contents($this->imageUrl);
+        }
+        return '';
+    }
 }

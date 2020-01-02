@@ -1,16 +1,24 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lib\Config\MessageType;
+
 abstract class AbstractMessage
 {
     const  MESSAGE_TXT = 'RC:TxtMsg';
+
     const  MESSAGE_IMG = 'RC:ImgMsg';
+
     const  MESSAGE_VC = 'RC:VcMsg';
+
     const  MESSAGE_IMG_TXT = 'RC:ImgTextMsg';
+
     const  MESSAGE_FILE = 'RC:FileMsg';
+
     const  MESSAGE_LBS = 'RC:LBSMsg';
 
-    protected $extra;
+    protected $extra = '';
 
     protected $messageType;
 
@@ -32,8 +40,12 @@ abstract class AbstractMessage
         return new static();
     }
 
+    public function getParamsString(): string
+    {
+        return json_encode($this->getParams());
+    }
+
     abstract public function getMessageType(): string;
 
     abstract public function getParams(): array;
-
 }

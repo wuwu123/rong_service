@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lib\Message\Person;
 
 use Lib\Config\MessageType\AbstractMessage;
@@ -9,26 +11,23 @@ use Lib\Request;
 class Person extends Request
 {
     /**
-     * 发送私人信息
+     * 发送私人信息.
      * @param $senderId
      * @param $targetId
-     * @param AbstractMessage $message
-     * @param UserObject|null $userObject
-     * @return array
      * @throws \Throwable
+     * @return array
      */
     public function send($senderId, $targetId, AbstractMessage $message, ?UserObject $userObject)
     {
         $requestParams = [
-            'senderId' => $senderId,
-            'targetId' => $targetId,
+            'fromUserId' => $senderId,
+            'toUserId' => $targetId,
             'objectName' => $message->getMessageType(),
-            'content' => $message->getParams(),
+            'content' => $message->getParamsString(),
         ];
         if ($userObject && $targetId == $userObject->getId()) {
             $requestParams['user'] = $userObject->getData();
         }
         return $this->post('/message/private/publish.json', $requestParams);
     }
-
 }

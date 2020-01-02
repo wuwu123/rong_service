@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Lib\Config;
-
 
 class UserObject
 {
@@ -53,5 +53,4 @@ class UserObject
             'icon' => $this->icon,
         ];
     }
-
 }
