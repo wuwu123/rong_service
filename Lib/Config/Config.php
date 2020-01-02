@@ -14,6 +14,9 @@ class Config
 
     private $maxRetry = 1;
 
+    /**
+     * @var \Closure
+     */
     private $clientClass;
 
     private $baseUrl = 'http://api-cn.ronghub.com';
@@ -50,7 +53,7 @@ class Config
     }
 
     /**
-     * @return mixed
+     * @return \Closure
      */
     public function getClientClass()
     {
@@ -76,10 +79,9 @@ class Config
     }
 
     /**
-     * @param mixed $clientClass
      * @return $this
      */
-    public function setClientClass($clientClass)
+    public function setClientClass(\Closure $clientClass)
     {
         $this->clientClass = $clientClass;
         return $this;

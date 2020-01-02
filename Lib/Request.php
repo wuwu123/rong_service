@@ -47,10 +47,14 @@ class Request
     /* @return Client */
     public function getClient()
     {
-        return new Client([
+        $config = [
             'headers' => $this->getHeader(),
             'base_uri' => $this->config->getBaseUrl(),
-        ]);
+        ];
+        if ($clientClass = $this->config->getClientClass()) {
+            return $clientClass($config);
+        }
+        return new Client($config);
     }
 
     /**

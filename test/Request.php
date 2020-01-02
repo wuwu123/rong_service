@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace RongTest;
 
 use Dotenv\Dotenv;
+use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 use RongLib\Config\Config;
 
@@ -17,6 +18,10 @@ class Request extends TestCase
     public function getConfig()
     {
         Dotenv::createImmutable(__DIR__ . '/../')->safeLoad();
-        return new Config(getenv('APP_KEY'), getenv('APP_SECRET'));
+        $model = new Config(getenv('APP_KEY'), getenv('APP_SECRET'));
+        $model->setClientClass(function (array $config) {
+            return new Client($config);
+        });
+        return $model;
     }
 }
