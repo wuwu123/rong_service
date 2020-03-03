@@ -6,7 +6,8 @@
     "require": {
         "php": ">=7.1",
         "guzzlehttp/guzzle": ">=6.3",
-        "ext-json": "*"
+        "ext-json": "*",
+        "nesbot/carbon": "^2.30"
     },
     "authors": [
         {
@@ -28,5 +29,9 @@
         "psr-4": {
             "RongTest\\": "test/"
         }
+    },
+    "scripts": {
+        "test": "php vendor/bin/phpunit -c phpunit.xml --colors=always",
+        "fix": " vendor/bin/php-cs-fixer fix Lib/"
     }
 }

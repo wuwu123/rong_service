@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace RongLib;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use Psr\Http\Message\ResponseInterface;
 use RongLib\Config\Config;
 
@@ -62,9 +63,22 @@ class Request
      * @throws \Throwable
      * @return array
      */
-    public function post($path, array $data)
+    public function post($path, array $data = [])
     {
         return $this->run('POST', $path, ['form_params' => $data]);
+    }
+
+    private function getRequestPath(string $path)
+    {
+        $pre = $this->config->getDataFormat();
+        if (empty($pre)) {
+            return $path;
+        }
+        $prePos = strrpos($path, '.');
+        if ($prePos === false) {
+            return $path . '.' . $pre;
+        }
+        return substr($path, 0, $prePos) . '.' . $pre;
     }
 
     /**
@@ -75,30 +89,34 @@ class Request
      */
     private function run($method, $path, array $params = [])
     {
+        $path = $this->getRequestPath($path);
         $retryNum = $this->config->getMaxRetry();
-        beginning:
         try {
-            $response = $this->getClient()->request(strtoupper($method), $path, $params);
-            return $this->dataFormat($response);
-        } catch (\Throwable $e) {
-            if (--$retryNum >= 0) {
-                goto beginning;
+            beginning:
+            try {
+                $response = $this->getClient()->request(strtoupper($method), $path, $params);
+                return $this->dataFormat($response);
+            } catch (\Throwable $e) {
+                if (--$retryNum >= 0) {
+                    goto beginning;
+                }
+                throw $e;
             }
-            throw $e;
+        } catch (RequestException $e) {
+            return $this->dataFormat($e->getResponse());
         }
     }
 
     private function dataFormat(ResponseInterface $response)
     {
         $statusCode = $response->getStatusCode();
+        $body = $response->getBody()->getContents();
+        $data = json_decode($body, true);
         if ($statusCode == 200) {
-            $body = $response->getBody()->getContents();
-            $data = json_decode($body, true);
-            if ($data['code'] == 200 ?? false) {
+            if ($code = $data['code'] ?? false and $code == 200) {
                 return [true, $data];
             }
-            return [false, $data['code'] ?? false];
         }
-        return [false, $statusCode];
+        return [false, $statusCode, $data];
     }
 }

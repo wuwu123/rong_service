@@ -12,7 +12,9 @@ class Config
 
     private $headerPre = 'RC-';
 
-    private $maxRetry = 1;
+    private $maxRetry = 0;
+
+    private $dataFormat = 'json';
 
     /**
      * @var \Closure
@@ -93,6 +95,20 @@ class Config
     public function setBaseUrl(string $baseUrl)
     {
         $this->baseUrl = $baseUrl;
+        return $this;
+    }
+
+    public function getDataFormat(): string
+    {
+        return $this->dataFormat;
+    }
+
+    /**
+     * @return $this
+     */
+    public function setDataFormat(string $dataFormat)
+    {
+        $this->dataFormat = $dataFormat;
         return $this;
     }
 }
