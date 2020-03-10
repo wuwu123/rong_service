@@ -117,6 +117,9 @@ class Request
                 return [true, $data];
             }
         }
-        return [false, $statusCode, $data];
+        if ($this->config->isReturnNew()) {
+            return [false, $data];
+        }
+        return [false, $statusCode];
     }
 }

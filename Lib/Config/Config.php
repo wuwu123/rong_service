@@ -16,6 +16,8 @@ class Config
 
     private $dataFormat = 'json';
 
+    private $returnNew = false;
+
     /**
      * @var \Closure
      */
@@ -52,6 +54,20 @@ class Config
     public function getMaxRetry(): int
     {
         return $this->maxRetry;
+    }
+
+    public function isReturnNew(): bool
+    {
+        return $this->returnNew;
+    }
+
+    /**
+     * @return $this
+     */
+    public function setReturnNew(bool $returnNew)
+    {
+        $this->returnNew = $returnNew;
+        return $this;
     }
 
     /**
