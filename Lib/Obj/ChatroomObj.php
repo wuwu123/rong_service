@@ -45,4 +45,53 @@ class ChatroomObj extends BaseObj
     public $type;
 
     public $time;
+
+    /**
+     * @param mixed $chatRoomId
+     * @return $this
+     */
+    public function setChatRoomId($chatRoomId)
+    {
+        $this->chatRoomId = $chatRoomId;
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function setUserIds(array $userIds)
+    {
+        $this->userIds = $userIds;
+        return $this;
+    }
+
+    /**
+     * @param mixed $status
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
+     * @param mixed $type
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    /**
+     * @param mixed $time
+     * @return $this
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+        return $this;
+    }
 }

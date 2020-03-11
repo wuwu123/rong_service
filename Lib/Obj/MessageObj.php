@@ -86,4 +86,104 @@ class MessageObj extends BaseObj
      * channelType 为 GROUP 时此参数有效，显示为群组中指定接收消息的用户 ID 数组，该条消息为群组定向消息。非定向消息时内容为空，如指定的用户不在群组中内容也为空.
      */
     public $groupUserIds;
+
+    /**
+     * @param mixed $fromUserId
+     * @return $this
+     */
+    public function setFromUserId($fromUserId)
+    {
+        $this->fromUserId = $fromUserId;
+        return $this;
+    }
+
+    /**
+     * @param mixed $toUserId
+     * @return $this
+     */
+    public function setToUserId($toUserId)
+    {
+        $this->toUserId = $toUserId;
+        return $this;
+    }
+
+    /**
+     * @param mixed $objectName
+     * @return $this
+     */
+    public function setObjectName($objectName)
+    {
+        $this->objectName = $objectName;
+        return $this;
+    }
+
+    /**
+     * @param mixed $content
+     * @return $this
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+        return $this;
+    }
+
+    /**
+     * @param mixed $channelType
+     * @return $this
+     */
+    public function setChannelType($channelType)
+    {
+        $this->channelType = $channelType;
+        return $this;
+    }
+
+    /**
+     * @param mixed $msgTimestamp
+     * @return $this
+     */
+    public function setMsgTimestamp($msgTimestamp)
+    {
+        $this->msgTimestamp = $msgTimestamp;
+        return $this;
+    }
+
+    /**
+     * @param mixed $msgUID
+     * @return $this
+     */
+    public function setMsgUID($msgUID)
+    {
+        $this->msgUID = $msgUID;
+        return $this;
+    }
+
+    /**
+     * @param mixed $sensitiveType
+     * @return $this
+     */
+    public function setSensitiveType($sensitiveType)
+    {
+        $this->sensitiveType = $sensitiveType;
+        return $this;
+    }
+
+    /**
+     * @param mixed $source
+     * @return $this
+     */
+    public function setSource($source)
+    {
+        $this->source = $source;
+        return $this;
+    }
+
+    /**
+     * @param mixed $groupUserIds
+     * @return $this
+     */
+    public function setGroupUserIds($groupUserIds)
+    {
+        $this->groupUserIds = $groupUserIds;
+        return $this;
+    }
 }
