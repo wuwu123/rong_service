@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace RongLib\Config\MessageType;
 
-abstract class AbstractMessage
+use RongLib\Config\ConditionArray;
+
+abstract class AbstractMessage implements ConditionArray
 {
     const  MESSAGE_TXT = 'RC:TxtMsg';
 
@@ -46,6 +48,4 @@ abstract class AbstractMessage
     }
 
     abstract public function getMessageType(): string;
-
-    abstract public function getParams(): array;
 }
