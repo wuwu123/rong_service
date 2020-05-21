@@ -63,9 +63,55 @@ class Request
      * @throws \Throwable
      * @return array
      */
+    public function postUrlencoded($path, array $data = [])
+    {
+        return $this->run('POST', $path, [
+            'headers' => [
+                'Content-Type' => 'application/x-www-form-urlencoded',
+            ],
+            'body' => $this->buildQuery($data),
+        ]);
+    }
+
+    /**
+     * @param $path
+     * @throws \Throwable
+     * @return array
+     */
     public function post($path, array $data = [])
     {
         return $this->run('POST', $path, ['form_params' => $data]);
+    }
+
+    public function buildQuery($formData, $numericPrefix = '', $argSeparator = '&', $prefixKey = '')
+    {
+        $str = '';
+        foreach ($formData as $key => $val) {
+            if (! is_array($val)) {
+                $str .= $argSeparator;
+                if ($prefixKey === '') {
+                    if (is_int($key)) {
+                        $str .= $numericPrefix;
+                    }
+                    $str .= urlencode($key) . '=' . urlencode((string) $val);
+                } else {
+                    $str .= urlencode($prefixKey) . '=' . urlencode((string) $val);
+                }
+            } else {
+                if ($prefixKey == '') {
+                    $prefixKey .= $key;
+                }
+                if (isset($val[0]) && is_array($val[0])) {
+                    $arr = [];
+                    $arr[$key] = $val[0];
+                    $str .= $argSeparator . http_build_query($arr);
+                } else {
+                    $str .= $argSeparator . $this->buildQuery($val, $numericPrefix, $argSeparator, $prefixKey);
+                }
+                $prefixKey = '';
+            }
+        }
+        return substr($str, strlen($argSeparator));
     }
 
     private function getRequestPath(string $path)

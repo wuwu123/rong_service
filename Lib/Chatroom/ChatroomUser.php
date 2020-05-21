@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace RongLib\Chatroom;
 
-use RongLib\Code\ParentsHelp;
 use RongLib\Request;
 
 /**
@@ -30,7 +29,7 @@ class ChatroomUser extends Request
         if ($count > self::MAX_COUNT) {
             throw new \Exception('最大查询个数' . self::MAX_COUNT);
         }
-        return $this->post('/chatroom/user/query', ['chatroomId' => $roomId, 'count' => $count, 'order' => $order]);
+        return $this->postUrlencoded('/chatroom/user/query', ['chatroomId' => $roomId, 'count' => $count, 'order' => $order]);
     }
 
     /**
@@ -44,7 +43,7 @@ class ChatroomUser extends Request
             'chatroomId' => $roomId,
             'userId' => $userId,
         ];
-        return $this->post('/chatroom/user/exist', $params);
+        return $this->postUrlencoded('/chatroom/user/exist', $params);
     }
 
     /**
@@ -56,9 +55,9 @@ class ChatroomUser extends Request
     {
         $params = [
             'chatroomId' => $roomId,
-            'userId' => ParentsHelp::getUserParams($userIdArray),
+            'userId' => $userIdArray,
         ];
-        return $this->post('/chatroom/users/exist', $params);
+        return $this->postUrlencoded('/chatroom/users/exist', $params);
     }
 
     /**
@@ -68,9 +67,9 @@ class ChatroomUser extends Request
      */
     public function whitelistAdd(string $roomId, array $userIdArray)
     {
-        return $this->post('/chatroom/user/whitelist/add', [
+        return $this->postUrlencoded('/chatroom/user/whitelist/add', [
             'chatroomId' => $roomId,
-            'userId' => ParentsHelp::getUserParams($userIdArray),
+            'userId' => $userIdArray,
         ]);
     }
 
@@ -81,9 +80,9 @@ class ChatroomUser extends Request
      */
     public function whitelistRemove(string $roomId, array $userIdArray)
     {
-        return $this->post('/chatroom/user/whitelist/remove', [
+        return $this->postUrlencoded('/chatroom/user/whitelist/remove', [
             'chatroomId' => $roomId,
-            'userId' => ParentsHelp::getUserParams($userIdArray),
+            'userId' => $userIdArray,
         ]);
     }
 
@@ -94,7 +93,7 @@ class ChatroomUser extends Request
      */
     public function whitelistQuery(string $roomId)
     {
-        return $this->post('/chatroom/user/whitelist/query', [
+        return $this->postUrlencoded('/chatroom/user/whitelist/query', [
             'chatroomId' => $roomId,
         ]);
     }

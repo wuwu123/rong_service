@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace RongLib\Chatroom;
 
-use RongLib\Code\ParentsHelp;
 use RongLib\Request;
 
 /**
@@ -20,7 +19,7 @@ class ChatroomMesage extends Request
      */
     public function distributionStop(string $roomId)
     {
-        return $this->post('/chatroom/message/stopDistribution', [
+        return $this->postUrlencoded('/chatroom/message/stopDistribution', [
             'chatroomId' => $roomId,
         ]);
     }
@@ -32,7 +31,7 @@ class ChatroomMesage extends Request
      */
     public function distributionResume(string $roomId)
     {
-        return $this->post('/chatroom/message/resumeDistribution', [
+        return $this->postUrlencoded('/chatroom/message/resumeDistribution', [
             'chatroomId' => $roomId,
         ]);
     }
@@ -44,8 +43,8 @@ class ChatroomMesage extends Request
      */
     public function priorityAdd(array $objectNameArray)
     {
-        $params['objectName'] = ParentsHelp::objectNameParams($objectNameArray);
-        return $this->post('/chatroom/message/priority/add', $params);
+        $params['objectName'] = $objectNameArray;
+        return $this->postUrlencoded('/chatroom/message/priority/add', $params);
     }
 
     /**
@@ -55,8 +54,8 @@ class ChatroomMesage extends Request
      */
     public function priorityRemove(array $objectNameArray)
     {
-        $params['objectName'] = ParentsHelp::objectNameParams($objectNameArray);
-        return $this->post('/chatroom/message/priority/remove', $params);
+        $params['objectName'] = $objectNameArray;
+        return $this->postUrlencoded('/chatroom/message/priority/remove', $params);
     }
 
     /**
@@ -66,7 +65,7 @@ class ChatroomMesage extends Request
      */
     public function priorityQuery()
     {
-        return $this->post('/chatroom/message/priority/query');
+        return $this->postUrlencoded('/chatroom/message/priority/query');
     }
 
     /**
@@ -76,8 +75,8 @@ class ChatroomMesage extends Request
      */
     public function whitelistAdd(array $objectNameArray)
     {
-        $params['objectnames'] = ParentsHelp::objectNameParams($objectNameArray);
-        return $this->post('/chatroom/whitelist/add', $params);
+        $params['objectnames'] = $objectNameArray;
+        return $this->postUrlencoded('/chatroom/whitelist/add', $params);
     }
 
     /**
@@ -87,8 +86,8 @@ class ChatroomMesage extends Request
      */
     public function whitelistRemove(array $objectNameArray)
     {
-        $params['objectnames'] = ParentsHelp::objectNameParams($objectNameArray);
-        return $this->post('/chatroom/whitelist/delete', $params);
+        $params['objectnames'] = $objectNameArray;
+        return $this->postUrlencoded('/chatroom/whitelist/delete', $params);
     }
 
     /**
@@ -98,6 +97,6 @@ class ChatroomMesage extends Request
      */
     public function whitelistQuery()
     {
-        return $this->post('/chatroom/whitelist/query');
+        return $this->postUrlencoded('/chatroom/whitelist/query');
     }
 }

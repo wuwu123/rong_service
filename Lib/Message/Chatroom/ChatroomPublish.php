@@ -24,7 +24,7 @@ class ChatroomPublish extends Request
             'objectName' => $message->getMessageType(),
             'content' => $message->getParamsString(),
         ];
-        return $this->post('/message/chatroom/publish', $requestParams);
+        return $this->postUrlencoded('/message/chatroom/publish', $requestParams);
     }
 
     /**
@@ -40,6 +40,6 @@ class ChatroomPublish extends Request
             'objectName' => $message->getMessageType(),
             'content' => $message->getParamsString(),
         ];
-        return $this->post('/message/chatroom/broadcast', $requestParams);
+        return $this->postUrlencoded('/message/chatroom/broadcast', $requestParams);
     }
 }

@@ -30,7 +30,7 @@ class Broadcast extends Request
             'pushData' => $pushData,
             'contentAvailable' => $contentAvailable,
         ];
-        return $this->post('message/broadcast', $requestParams);
+        return $this->postUrlencoded('message/broadcast', $requestParams);
     }
 
     /**
@@ -48,6 +48,6 @@ class Broadcast extends Request
             'message' => $message->getParamsString(),
             'notification' => $notification->getParams(),
         ];
-        return $this->post('push', $requestParams);
+        return $this->postUrlencoded('push', $requestParams);
     }
 }

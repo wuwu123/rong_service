@@ -19,7 +19,7 @@ class Chatroom extends Request
      */
     public function create(string $roomId, string $name)
     {
-        return $this->post('/chatroom/create', ['chatroom[' . $roomId . ']' => $name]);
+        return $this->postUrlencoded('/chatroom/create', ['chatroom[' . $roomId . ']' => $name]);
     }
 
     /**
@@ -29,7 +29,7 @@ class Chatroom extends Request
      */
     public function destroy(string $roomId)
     {
-        return $this->post('/chatroom/destroy', ['chatroomId' => $roomId]);
+        return $this->postUrlencoded('/chatroom/destroy', ['chatroomId' => $roomId]);
     }
 
     /**
@@ -39,7 +39,7 @@ class Chatroom extends Request
      */
     public function query(string $roomId)
     {
-        return $this->post('/chatroom/query', ['chatroomId' => $roomId]);
+        return $this->postUrlencoded('/chatroom/query', ['chatroomId' => $roomId]);
     }
 
     /**
@@ -49,7 +49,7 @@ class Chatroom extends Request
      */
     public function keepaliveAdd(string $roomId)
     {
-        return $this->post('/chatroom/keepalive/add', ['chatroomId' => $roomId]);
+        return $this->postUrlencoded('/chatroom/keepalive/add', ['chatroomId' => $roomId]);
     }
 
     /**
@@ -59,7 +59,7 @@ class Chatroom extends Request
      */
     public function keepaliveRemove(string $roomId)
     {
-        return $this->post('/chatroom/keepalive/remove', ['chatroomId' => $roomId]);
+        return $this->postUrlencoded('/chatroom/keepalive/remove', ['chatroomId' => $roomId]);
     }
 
     /**
@@ -69,6 +69,6 @@ class Chatroom extends Request
      */
     public function keepaliveQuery()
     {
-        return $this->post('/chatroom/keepalive/query', []);
+        return $this->postUrlencoded('/chatroom/keepalive/query', []);
     }
 }

@@ -28,6 +28,6 @@ class Person extends Request
         if ($userObject && $targetId == $userObject->getId()) {
             $requestParams['user'] = $userObject->getData();
         }
-        return $this->post('/message/private/publish.json', $requestParams);
+        return $this->postUrlencoded('/message/private/publish.json', $requestParams);
     }
 }

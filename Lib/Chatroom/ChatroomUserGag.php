@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace RongLib\Chatroom;
 
-use RongLib\Code\ParentsHelp;
 use RongLib\Request;
 
 /**
@@ -28,8 +27,8 @@ class ChatroomUserGag extends Request
         if ($minute > self::MAX_GAD_MINUTE) {
             throw new \Exception('最大禁言时间' . self::MAX_GAD_MINUTE . '分钟');
         }
-        $userString = ParentsHelp::getUserParams($userIdArray);
-        return $this->post('/chatroom/user/gag/add', ['userId' => $userString, 'chatroomId' => $roomId, 'minute' => $minute]);
+        $userString = $userIdArray;
+        return $this->postUrlencoded('/chatroom/user/gag/add', ['userId' => $userString, 'chatroomId' => $roomId, 'minute' => $minute]);
     }
 
     /**
@@ -39,7 +38,7 @@ class ChatroomUserGag extends Request
      */
     public function rollback(string $roomId, array $userIdArray)
     {
-        $userString = ParentsHelp::getUserParams($userIdArray);
-        return $this->post('/chatroom/user/gag/rollback', ['userId' => $userString, 'chatroomId' => $roomId]);
+        $userString = $userIdArray;
+        return $this->postUrlencoded('/chatroom/user/gag/rollback', ['userId' => $userString, 'chatroomId' => $roomId]);
     }
 }
