@@ -16,9 +16,9 @@
         }
     ],
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16",
         "phpunit/phpunit": "^8.5",
-        "vlucas/phpdotenv": "^4.1"
+        "vlucas/phpdotenv": "^4.1",
+        "friendsofphp/php-cs-fixer": "^3.0"
     },
     "autoload": {
         "psr-4": {
@@ -32,6 +32,6 @@
     },
     "scripts": {
         "test": "php vendor/bin/phpunit -c phpunit.xml --colors=always",
-        "fix": " vendor/bin/php-cs-fixer fix Lib/"
+        "fix": "php-cs-fixer fix $1"
     }
 }

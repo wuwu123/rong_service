@@ -8,17 +8,17 @@ use RongLib\Config\ConditionArray;
 
 abstract class AbstractMessage implements ConditionArray
 {
-    const  MESSAGE_TXT = 'RC:TxtMsg';
+    public const  MESSAGE_TXT = 'RC:TxtMsg';
 
-    const  MESSAGE_IMG = 'RC:ImgMsg';
+    public const  MESSAGE_IMG = 'RC:ImgMsg';
 
-    const  MESSAGE_VC = 'RC:VcMsg';
+    public const  MESSAGE_VC = 'RC:VcMsg';
 
-    const  MESSAGE_IMG_TXT = 'RC:ImgTextMsg';
+    public const  MESSAGE_IMG_TXT = 'RC:ImgTextMsg';
 
-    const  MESSAGE_FILE = 'RC:FileMsg';
+    public const  MESSAGE_FILE = 'RC:FileMsg';
 
-    const  MESSAGE_LBS = 'RC:LBSMsg';
+    public const  MESSAGE_LBS = 'RC:LBSMsg';
 
     protected $extra = '';
 

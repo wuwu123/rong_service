@@ -8,7 +8,7 @@ use RongLib\Request;
 
 class ChatroomUserBlock extends Request
 {
-    const MAX_BLOCK_MINUTE = 43200;
+    public const MAX_BLOCK_MINUTE = 43200;
 
     /**
      * 添加封禁

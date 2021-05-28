@@ -1,8 +1,6 @@
 <?php
 
-
 namespace RongTest\Message;
-
 
 use RongLib\Config\MessageType\TxtMsg;
 use RongLib\Config\UserObject;
@@ -29,5 +27,4 @@ class ChatroomPublishTest extends Request
         $data = $person->broadcast(1577757783681963, $message);
         $this->assertEquals(true, $data[0]);
     }
-
 }

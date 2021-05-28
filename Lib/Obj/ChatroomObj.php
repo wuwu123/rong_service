@@ -6,21 +6,21 @@ namespace RongLib\Obj;
 
 class ChatroomObj extends BaseObj
 {
-    const STATUS_DEFAULT = 0;
+    public const STATUS_DEFAULT = 0;
 
-    const STATUS_RONG_RULE = 1;
+    public const STATUS_RONG_RULE = 1;
 
-    const STATUS_GAG = 2;
+    public const STATUS_GAG = 2;
 
-    const STATUS_DESTROY = 3;
+    public const STATUS_DESTROY = 3;
 
-    const TYPE_CREATE = 0;
+    public const TYPE_CREATE = 0;
 
-    const TYPE_JOIN = 1;
+    public const TYPE_JOIN = 1;
 
-    const TYPE_EXIT = 2;
+    public const TYPE_EXIT = 2;
 
-    const TYPE_DESTROY = 3;
+    public const TYPE_DESTROY = 3;
 
     public static $statusShow = [
         self::STATUS_DEFAULT => '直接调用接口',

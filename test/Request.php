@@ -22,7 +22,7 @@ class Request extends TestCase
     {
         Dotenv::createImmutable(__DIR__ . '/../')->safeLoad();
         $model = new Config(getenv('APP_KEY'), getenv('APP_SECRET'));
-        $model->setClientClass(function(array $config) {
+        $model->setClientClass(function (array $config) {
             return new Client($config);
         });
         return $model;

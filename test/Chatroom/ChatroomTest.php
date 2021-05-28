@@ -1,8 +1,6 @@
 <?php
 
-
 namespace RongTest\Chatroom;
-
 
 use RongLib\Chatroom\Chatroom;
 use RongTest\Request;
@@ -25,5 +23,4 @@ class ChatroomTest extends Request
         // var_dump($data);
         $this->assertEquals(true, $data[0]);
     }
-
 }

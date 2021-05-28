@@ -9,42 +9,42 @@ class MessageObj extends BaseObj
     /**
      * 二人会话.
      */
-    const CHANNEL_TYPE_PERSON = 'PERSON';
+    public const CHANNEL_TYPE_PERSON = 'PERSON';
 
     /**
      * 讨论组会话.
      */
-    const CHANNEL_TYPE_PERSONS = 'PERSONS';
+    public const CHANNEL_TYPE_PERSONS = 'PERSONS';
 
     /**
      * 群组会话.
      */
-    const CHANNEL_TYPE_GROUP = 'GROUP';
+    public const CHANNEL_TYPE_GROUP = 'GROUP';
 
     /**
      * 聊天室会话.
      */
-    const CHANNEL_TYPE_TEMPGROUP = 'TEMPGROUP';
+    public const CHANNEL_TYPE_TEMPGROUP = 'TEMPGROUP';
 
     /**
      * 客服会话.
      */
-    const CHANNEL_TYPE_CUSTOMERSERVICE = 'CUSTOMERSERVICE';
+    public const CHANNEL_TYPE_CUSTOMERSERVICE = 'CUSTOMERSERVICE';
 
     /**
      * 系统通知.
      */
-    const CHANNEL_TYPE_NOTIFY = 'NOTIFY';
+    public const CHANNEL_TYPE_NOTIFY = 'NOTIFY';
 
     /**
      * 应用公众服务
      */
-    const CHANNEL_TYPE_MC = 'MC';
+    public const CHANNEL_TYPE_MC = 'MC';
 
     /**
      * 公众服务
      */
-    const CHANNEL_TYPE_MP = 'MP';
+    public const CHANNEL_TYPE_MP = 'MP';
 
     public $fromUserId;
 

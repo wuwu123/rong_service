@@ -1,8 +1,6 @@
 <?php
 
-
 namespace RongTest\Chatroom;
-
 
 use RongLib\Chatroom\Chatroom;
 use RongLib\Chatroom\ChatroomMesage;
@@ -10,7 +8,8 @@ use RongTest\Request;
 
 class ChatroomMessageTest extends Request
 {
-    public function testDistribution(){
+    public function testDistribution()
+    {
         $messageModel = new ChatroomMesage($this->getConfig());
         $data = $messageModel->distributionStop($this->roomId);
         var_dump($data);
@@ -19,7 +18,8 @@ class ChatroomMessageTest extends Request
         $this->assertEquals(true, $data[0]);
     }
 
-    public function testPriority(){
+    public function testPriority()
+    {
         $messageModel = new ChatroomMesage($this->getConfig());
         $data = $messageModel->priorityAdd(['RC:VcMsg']);
         var_dump($data);
@@ -32,7 +32,8 @@ class ChatroomMessageTest extends Request
         $this->assertEquals(true, $data[0]);
     }
 
-    public function testWhitelist(){
+    public function testWhitelist()
+    {
         $messageModel = new ChatroomMesage($this->getConfig());
         $data = $messageModel->whitelistAdd(['RC:VcMsg']);
         var_dump($data);
@@ -44,5 +45,4 @@ class ChatroomMessageTest extends Request
         var_dump($data);
         $this->assertEquals(true, $data[0]);
     }
-
 }

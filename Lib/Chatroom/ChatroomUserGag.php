@@ -12,7 +12,7 @@ use RongLib\Request;
  */
 class ChatroomUserGag extends Request
 {
-    const MAX_GAD_MINUTE = 43200;
+    public const MAX_GAD_MINUTE = 43200;
 
     /**
      * 添加禁言名单.

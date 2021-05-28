@@ -12,11 +12,11 @@ use RongLib\Request;
  */
 class ChatroomUser extends Request
 {
-    const TIME_ASC = 1;
+    public const TIME_ASC = 1;
 
-    const TIME_DESC = 2;
+    public const TIME_DESC = 2;
 
-    const MAX_COUNT = 500;
+    public const MAX_COUNT = 500;
 
     /**
      * @param $count
